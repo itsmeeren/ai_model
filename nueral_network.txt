@@ -1,0 +1,11 @@
+backpropogation - which uses two pass forward and backward pass to
+
+
+
+algorithm is able to compute the gradient of the network’s error with regards to every sin‐
+gle model parameter. In other words, it can find out how each connection weight and
+each bias term should be tweaked in order to reduce the error. Once it has these gra‐
+dients, it just performs a regular Gradient Descent step, and the whole process is
+repeated until the network converges to the solution
+
+if we set the confidence threshhold then if the image of other classes is given then if its lower than threshhold then it shows out of prediction

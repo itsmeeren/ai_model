@@ -243,7 +243,7 @@ print(tree_rmse)
 
 
 
-# so one solution for this si creating the folds that is subset of the training data and train the model time the no of folds
+# so one solution for this is creating the folds that is subset of the training data and train the model time the no of folds
 
 from sklearn.model_selection import cross_val_score
 scores = cross_val_score(tree_reg, housing_prepared, housing_labels,
@@ -261,7 +261,7 @@ def display_scores(scores):
 
 display_scores(tree_rmse_scores)
 
-# again model is overfitting badly so going for random forestr building the model over the model Ensemble learning
+# again model is overfitting badly so going for random forest building the model over the model Ensemble learning
 
 
 
@@ -292,3 +292,5 @@ grid_search = GridSearchCV(forest_reg, param_grid, cv=5,
 scoring='neg_mean_squared_error',
 return_train_score=True)
 grid_search.fit(housing_prepared, housing_labels)
+
+
