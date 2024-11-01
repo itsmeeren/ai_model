@@ -1,0 +1,31 @@
+Project Overview
+
+The goal of this project is to accelerate Convolutional Neural Network (CNN) computations on the ZedBoard by offloading compute-intensive operations to the programmable logic (FPGA) while handling user interaction on the ARM processor. This division of tasks leverages the ZedBoard’s dual-core ARM processor for user interaction and management, while the FPGA handles the parallel computation of convolution layers in the CNN.
+Key Objectives:
+
+    Design a CNN Accelerator: Speed up CNN training and inference by processing convolution operations on FPGA.
+    Platform Setup: Use Vitis and Vivado to configure ZedBoard’s FPGA and ARM with the necessary boot images.
+    AXI Interconnection: Establish communication between the ARM processor and FPGA using AXI interconnects for data exchange.
+    Deployment: Test the setup by running a sample CNN model, verifying the separation of computations, and observing speed improvements.
+
+Project Progress
+1. Platform Setup in Vitis
+
+    1 Platform Creation:
+        Created a new platform project in Vitis using the exported XSA file from Vivado.
+        Selected the option to Create from hardware specification (XSA), linking the platform to the hardware design.
+
+    2 BSP Integration:
+        Initiated an Application Project, selected the platform, and imported an existing Board Support Package (BSP) for Zynq.
+        Configured the BSP for a Standalone operating system to simplify control over custom applications and FPGA interactions.
+
+    3 First Stage Boot Loader (FSBL) Creation:
+        Created an FSBL project targeting the ZedBoard’s ARM processing system.
+        Compiled and built the FSBL, producing an ELF file necessary for boot image creation.
+
+    4 Boot Image Creation:
+        Created the boot image (BOOT.bin) using the Bootgen tool in Vitis, including:
+            FSBL ELF: Initializing the hardware and configuring bootup.
+            Bitstream (.bit): Configuring FPGA logic design for CNN computations.
+            Application ELF: Included any application-specific binaries.
+        Generated the BOOT.bin file to be deployed on the ZedBoard.

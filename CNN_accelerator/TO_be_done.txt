@@ -1,0 +1,50 @@
+Deployment on ZedBoard
+
+With the boot image ready, the next step is to transfer it to the ZedBoard and boot from it.
+
+    Boot Image Transfer:
+        Copied BOOT.bin to an SD card formatted with FAT32 and labeled BOOT.
+        Inserted the SD card into the ZedBoard’s SD card slot.
+        Configured the ZedBoard's boot mode to boot from SD.
+
+    Boot Verification:
+        Powered on the ZedBoard to verify the system boots correctly, running initializations from the FSBL and loading application binaries.
+
+ System Design for CNN Acceleration
+
+To achieve the goal of accelerating CNN computations, we will divide tasks between the ARM processor and FPGA. Here’s the plan to implement this architecture:
+1. User Interaction on ARM Processor
+
+    Interface Development: Design a user interface on the ARM processor to accept input and control the CNN computations.
+    Communication Handling: Program the ARM processor to manage data flow and control signals between the user interface and the CNN accelerator on the FPGA.
+
+2. CNN Computation on FPGA
+
+    Hardware Design for CNN Layers:
+        Develop HDL or use HLS (High-Level Synthesis) to implement convolution, pooling, and ReLU layers on the FPGA.
+        Ensure modular design so individual layers can be optimized and tuned for maximum speed.
+    AXI Interface Configuration:
+        Use AXI interconnects to set up data exchange between ARM and FPGA.
+        Establish AXI DMA (Direct Memory Access) for efficient data transfer of input features and output activations.
+
+3. Integration of ARM-FPGA Interaction
+
+    Data Synchronization: Develop a protocol on the ARM processor to initiate, monitor, and retrieve results from FPGA-based CNN layers.
+    Performance Optimization:
+        Implement double buffering or pipelining on the FPGA for continuous data processing.
+        Use AXI burst transactions to minimize communication latency between ARM and FPGA.
+
+4. Deployment and Testing
+
+    Deploy CNN Model:
+        Deploy a CNN model, configure its layers on FPGA, and test with sample data.
+        Adjust parameters (e.g., batch size, layer configurations) to optimize FPGA usage.
+    Benchmarking and Performance Analysis:
+        Measure the speedup achieved in processing time compared to running the model entirely on ARM.
+        Test for various CNN model architectures and record results.
+        
+        
+Presentation - ppt have to be done on what has been done till today , and go through the process that have been done and enquire if any and suggestions are apperciated 
+
+also if this linux booting doesnt works we should be ready to start plan B thats softcore processing.
+
